@@ -1,9 +1,10 @@
 import layoutHandler from "./layout.js";
+import isValidField from "./validation.js";
 
 function createHandler() {
     const zipEl = document.querySelector("#zip");
     const feelingEl = document.querySelector("#feelings");
-    if (zipEl.validity.valid && feelingEl.validity.valid) {
+    if (isValidField(zipEl, feelingEl)) {
         createEntity({ zip: zipEl.value, feeling: feelingEl.value });
         layoutHandler("create");
     }
