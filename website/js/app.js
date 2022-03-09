@@ -29,14 +29,20 @@ function createEntity({ zip, feeling }) {
     });
 }
 
+function formatDate(date) {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(date).toLocaleDateString("en-US", options);
+}
+
 function updateUI() {
     get("/entries").
         then(entries => {
             const fragment = document.createDocumentFragment();
             const template = document.querySelector("template").content;
-            const entryCount = document.querySelectorAll(".entry").length;
-            entries.slice(entryCount, entries.length).forEach(({ date, temp, feeling }) => {
-                template.querySelector(".date").textContent = date;
+            const currentEntriesCount = document.querySelectorAll(".entry").length;
+            const newEntries = entries.slice(currentEntriesCount, entries.length);
+            newEntries.forEach(({ date, temp, feeling }) => {
+                template.querySelector(".date").textContent = formatDate(date);
                 template.querySelector(".temp").textContent = `${temp.toFixed(2)}°C`;
                 template.querySelector(".feelings").textContent = feeling;
                 const clone = document.importNode(template, true);
