@@ -25,7 +25,19 @@
     color: white;
 }
 
+
+#new__layout .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: 100%;
+}
+
 @media (min-width: 900px) {
+    #new__layout .content {
+        display: block;
+    }
+
     #new__layout {
         display: flex;
         align-items: center;
