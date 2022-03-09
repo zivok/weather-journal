@@ -8,14 +8,15 @@ function isOnActiveWidth() {
 }
 
 document.addEventListener("click", function (ev) {
+
     if (!isOnActiveWidth()) {
         return;
     }
     if (ev.target.matches("#new")) {
         newLayout.classList.remove("hidden");
-        entriesLayout.classList.remove("open");
+        entriesLayout.classList.add("hidden");
     } else if (ev.target.matches("#index") || ev.target.matches("#create")) {
-        entriesLayout.classList.add("open");
+        entriesLayout.classList.remove("hidden");
         newLayout.classList.add("hidden");
     }
 });

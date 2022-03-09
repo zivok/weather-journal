@@ -1,52 +1,43 @@
 #entries__layout {
-    height: 100vh;
     background-color: white;
     color: rgb(117,64,238);
-    display: none;
 }
 
-#entries__layout h1 {
-    margin: 1rem;
-}
-
-#entries__layout > div:nth-last-child(1) {
+#entries__layout .control {
     position: fixed;
     bottom: 0;
-    background: rgb(117,64,238);
-    background: linear-gradient(90deg, rgba(117,64,238,1) 0%, rgba(162,0,255,1) 100%);
     width: 100%;
-    padding: 1rem;
+    justify-content: flex-end;
     border-radius: 10px 10px 0 0;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    text-align: right;
 }
 
-#entries {
-    margin-bottom: 6rem;
-}
-
-.entry {
-    padding: .5rem 1rem;
-    margin: 1rem;
-}
-
-.entry:nth-of-type(odd) {
-    background-color: #e0e0e0;
-    color: rgb(117,64,238);
-    margin-right: 2rem;
-    border-radius: 10px 10px 10px 0;
+.control button#new {
+    margin-bottom: 2px;
 }
 
 .entry:nth-of-type(even) {
+    border-radius: 10px 10px 0 10px;
+    margin: 1rem 0;
+    margin-left: auto;
+    margin-right: 0;
     background: rgb(117,64,238);
     background: linear-gradient(90deg, rgba(117,64,238,1) 0%, rgba(162,0,255,1) 100%);
     color: white;
-    margin-left: 2rem;
-    border-radius: 10px 10px 0 10px;
 }
 
-#entries__layout.open {
-    display: block;
+.entry:nth-of-type(odd) {
+    border-radius: 10px 10px 10px 0;
+    margin-left: 0;
+    margin-right: auto;
+    background-color: #e0e0e0;
+    color: rgb(117,64,238);
+}
+
+.entry {
+    min-width: 250px;
+    max-width: 400px;
+    width: 90%; 
+    padding: 1rem;
 }
 
 .entry > div {
@@ -55,4 +46,14 @@
 
 .temp {
     margin-bottom: 0;
+}
+
+.entries {
+    margin: 1rem;
+    max-width: 520px;
+    padding-bottom: 6rem;
+}
+
+#entries__layout h1 {
+    margin-left: 1rem;
 }

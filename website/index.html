@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,60 +9,62 @@
     <script defer src="./js/layout.js"></script>
     <title>Weather Journal</title>
 </head>
+
 <body>
     <div class="app">
-        <div id="new__layout">
-            <div>
-                <h1>How are you feeling today?</h1>
-                <div class="input__container">
-                    <input type="text" id="zip" placeholder="Enter your zip code here.*" required>
-                    <textarea id="feeling" placeholder="Enter your feelings here.*" required></textarea>
+        <div id="new__layout" class="layout">
+            <div class="content">
+                <div class="form">
+                    <h1>How are you feeling today?</h1>
+                    <div class="fieldset">
+                        <input id="zip" type="text" placeholder="Enter your zip code here.*" required>
+                        <textarea id="feelings" placeholder="Enter your feelings here.*" required></textarea>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <button id="index" class="secundary__btn">Skip</button>
-                <button id="create" class="default__btn">Create</button>
+
+                <div class="control">
+                    <button id="index" class="secundary__btn">Skip</button>
+                    <button id="create" class="default__btn">Create</button>
+                </div>
             </div>
         </div>
-        <div id="entries__layout">
-            <h1>Latest entries</h1>
-            <div id="entries">
-                <div class="entry">
-                    <div><span class="date">22 Feb, 2022</span></div>
-                    <h2 class="temp">26°C</h2>
-                    <p class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam veritatis fugiat ad aspernatur voluptatem dignissimos obcaecati, reprehenderit, esse unde labore ea quia nobis vero numquam consectetur velit eius facilis. Quam!</p>
+        <div id="entries__layout" class="layout hidden">
+            <div class="content">
+                <h1>Latest entries</h1>
+                <div class="entries">
+                    <div class="entry">
+                        <div><span class="date">22 Feb, 2022</span></div>
+                        <h3 class="temp">26°C</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem aliquid saepe iure, molestiae consectetur beatae culpa error tempora architecto quas dolores corrupti quasi corporis repudiandae labore odio incidunt at nulla.</p>
+                    </div>
+                    <div class="entry">
+                        <div><span class="date">24 Feb, 2022</span></div>
+                        <h3 class="temp">20°C</h3>
+                        <p>Numquam itaque alias, soluta ipsum, fugit accusamus eum necessitatibus voluptatum eaque eveniet quod suscipit sunt architecto sequi dolor veniam praesentium sapiente amet nobis consectetur illo cum laborum reiciendis fugiat. Blanditiis?</p>
+                    </div>
+                    <div class="entry">
+                        <div><span class="date">26 Feb, 2022</span></div>
+                        <h3 class="temp">10°C</h3>
+                        <p>Vitae saepe quo officiis harum laborum quaerat non corporis provident voluptate unde eius magnam error, eveniet illum, quia, temporibus itaque! Aut, ipsum expedita deserunt maiores ut pariatur tenetur cumque tempore.</p>
+                    </div>
+                    <div class="entry">
+                        <div><span class="date">02 Feb, 2022</span></div>
+                        <h3 class="temp">40°C</h3>
+                        <p>Sunt modi provident voluptatibus obcaecati, earum maxime id suscipit molestias explicabo esse consequatur repellat, neque harum optio sint voluptate nobis recusandae magni eligendi porro accusamus veniam magnam quasi aut! Iure.</p>
+                    </div>
+                    <div class="entry">
+                        <div><span class="date">05 Feb, 2022</span></div>
+                        <h3 class="temp">12°C</h3>
+                        <p>Doloribus nihil temporibus accusantium dolorum maiores aperiam debitis, itaque a aspernatur dignissimos magni distinctio, numquam dolor optio, animi enim perspiciatis reiciendis eveniet iste blanditiis praesentium assumenda placeat ea. Sapiente, molestias.</p>
+                    </div>
                 </div>
-                <div class="entry">
-                    <div><span class="date">24 Feb, 2022</span></div>
-                    <h2 class="temp">20°C</h2>
-                    <p class="content">Eum a voluptas temporibus cupiditate officiis dolor veritatis est laborum earum quas excepturi et iste quaerat recusandae magnam minima consequatur ipsam saepe, nobis magni dolorum. Temporibus similique numquam possimus doloremque?</p>
-                </div>
-                <div class="entry">
-                    <div><span class="date">26 Feb, 2022</span></div>
-                    <h2 class="temp">10°C</h2>
-                    <p class="content">Ullam modi aliquid voluptates porro repellendus possimus, quas distinctio? Possimus, eveniet cum? Impedit delectus dicta aliquid quia exercitationem vitae, harum fugiat ullam assumenda similique, magnam deserunt nostrum earum itaque tenetur!</p>
-                </div>
-                <div class="entry">
-                    <div><span class="date">02 Feb, 2022</span></div>
-                    <h2 class="temp">40°C</h2>
-                    <p class="content">Qui tempore est totam molestias explicabo sint dolorem ad quasi dolor, voluptatem molestiae odit facilis fuga amet unde cupiditate earum exercitationem accusamus architecto sed distinctio. Architecto culpa delectus accusamus earum.</p>
-                </div>
-                <div class="entry">
-                    <div><span class="date">05 Feb, 2022</span></div>
-                    <h2 class="temp">12°C</h2>
-                    <p class="content">Vero fugiat maiores soluta repellat fugit animi nulla eaque quisquam, aut ratione corrupti itaque reiciendis dolore, sit velit voluptate deleniti possimus delectus repudiandae perspiciatis architecto? Culpa similique placeat repellendus velit!</p>
-                </div>
-                <div class="entry">
-                    <div><span class="date">06 Feb, 2022</span></div>
-                    <h2 class="temp">30°C</h2>
-                    <p class="content">Numquam dolore reprehenderit suscipit, beatae eius obcaecati laboriosam aperiam at possimus totam praesentium, odit, nihil nulla quas ullam reiciendis maxime cupiditate ducimus aut similique! Vel, error? Similique sed sint voluptas.</p>
+
+                <div class="control">
+                    <button id="new" class="default__btn">New</button>
                 </div>
             </div>
-            <div>
-                <button id="new" class="default__btn">New</button>
-            </div>
-            
         </div>
     </div>
 </body>
+
 </html>
