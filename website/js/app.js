@@ -1,7 +1,14 @@
 import layoutHandler from "./layout.js";
 import isValidField from "./validation.js";
+import { simpleFetch } from "./simpleFetch.js";
 
-function createHandler() {
+function createEntity({ zip, feeling }) {
+    simpleFetch.get("/weather", { zip })
+    .then(({ temp }) => simpleFetch.post("/entries", { zip, temp, feeling }))
+    .then(() => updateUI());
+}
+
+function createEntityHandler() {
     const zipEl = document.querySelector("#zip");
     const feelingEl = document.querySelector("#feelings");
     if (isValidField(zipEl, feelingEl)) {
@@ -10,25 +17,19 @@ function createHandler() {
     }
 }
 
+function isMatches(ev, sel) {
+    return ev.target.matches(sel);
+}
+
 document.addEventListener("click", function(ev) {
-    if (ev.target.matches("#create")) {
-        createHandler();
-    } else if (ev.target.matches("#index") || ev.target.matches("#new")) {
+    if (isMatches(ev, "#create")) {
+        createEntityHandler();
+    } else if (isMatches(ev, "#index") || isMatches(ev, "#new")) {
         layoutHandler(ev.target.id);
     }
 });
 
 document.addEventListener("DOMContentLoaded", updateUI);
-
-function createEntity({ zip, feeling }) {
-    get("/weather", { zip })
-    .then(({ temp }) => {
-        post("/entries", { zip, temp, feeling });
-    })
-    .then(() => {
-        updateUI();
-    });
-}
 
 function formatTemp(kelvin) {
     const celsius = kelvin - 273.15;
@@ -41,7 +42,7 @@ function formatDate(date) {
 }
 
 function updateUI() {
-    get("/entries").
+    simpleFetch.get("/entries").
         then(entries => {
             const fragment = document.createDocumentFragment();
             const template = document.querySelector("template").content;
@@ -56,36 +57,4 @@ function updateUI() {
             });
             document.querySelector(".entries").appendChild(fragment);
         });
-}
-
-function buildUrl(path, params) {
-    params = Object.entries(params).map(p => p.join("=")).join("&");
-    return params ? `${path}?${params}` : path;
-}
-
-async function get(path, params = {}) {
-    const url = buildUrl(path, params);
-    console.log(url);
-    const res = await fetch(url);
-    try {
-        const json = await res.json();
-        console.log(json);
-        return json;
-    } catch(error) {
-        console.log("error: " + error);
-    }
-}
-
-async function post(url, data = {}) {
-    console.log(url);
-    console.log(data);
-    const res = await fetch(url, {
-        method: "POST", 
-        credentials: "same-origin",
-        headers: {
-            "Content-Type": "application/json",
-        },     
-        body: JSON.stringify(data), 
-      });
-      console.log(res.status);
 }
