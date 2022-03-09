@@ -57,3 +57,32 @@
 #entries__layout h1 {
     margin-left: 1rem;
 }
+
+@media (min-width: 900px) {
+    .app {
+        display: grid;
+        grid-template-columns: 1fr minmax(300px, 40%);
+        grid-template-rows: 1fr;
+    }
+
+    #entries__layout {
+        display: block;
+        overflow-y: scroll;
+    }
+
+    #entries__layout .content {
+        grid-area: 1/2/2/3;
+        height: 100vh;
+        width: 90%;
+        max-width: 580px;
+        margin: 0 auto;
+    }
+    
+    #entries__layout .control {
+        display: none;
+    }
+
+    .entries {
+        padding-bottom: 1.5rem;
+    }
+}

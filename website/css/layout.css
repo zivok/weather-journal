@@ -28,3 +28,23 @@
     height: 100vh;
     min-height: 600px;
 }
+
+@media (min-width: 900px) {
+    .app {
+        display: grid;
+        grid-template-columns: 1fr minmax(300px, 40%);
+        grid-template-rows: 1fr;
+    }
+    
+    .content {
+        display: block;
+        width: 500px;
+        height: min-content;
+        margin: auto;
+    }
+
+    .control {
+        width:  500px;
+        justify-content: flex-end;
+    }
+}
