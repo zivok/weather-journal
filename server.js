@@ -17,6 +17,8 @@ const port = 8000;
 app.listen(port, () => console.log(`Running localhost on port: ${port}`));
 
 app.get("/weather", (req, res) => {
+    console.log(req.url);
+    console.log(req.query);
     const zip = req.query.zip;
     const options = {
         method: "GET",
@@ -31,12 +33,13 @@ app.get("/weather", (req, res) => {
     axios.request(options)
     .then(function (response) {
         const samplesPerDay = 8;
-        console.log(response.data);
         const avgTempForToday = response.data.list.slice(samplesPerDay)
             .map(item => item.main.temp)
             .reduce((acum, curr, _, arr) => acum + curr / arr.length, 0);
-	    const tempInCelsius = kelvinToCelsius(avgTempForToday);
-        res.send({ temp: tempInCelsius});
+	    const tempInCelsius = Math.round(kelvinToCelsius(avgTempForToday));
+        const json = { temp: tempInCelsius};
+        res.send(json);
+        console.log(json);
     }).catch(function (error) {
         console.error(error);
     });
@@ -49,14 +52,23 @@ function kelvinToCelsius(kelvin) {
 const entries = [{
     date: 1646792019819,
     zip: 55124,
-    temp: -9.22,
+    temp: -9.222193749999957,
     feeling: "Hello world!👋 from Minnesota 🥶"
 }];
 app.get("/entries", (req, res) => {
+    console.log(req.path)
     res.send(entries);
+    console.log(entries)
 });
 
 app.post("/entries", (req, res) => {
-    entries.push({ date: Date.now(), ...req.body });
+    console.log(req.path)
+    console.log(req.body)
+    const entity = { 
+        date: Date.now(), 
+        ...req.body
+    };
+    entries.push(entity);
     res.sendStatus(200);
+    console.log(entries)
 });
