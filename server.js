@@ -36,8 +36,7 @@ app.get("/weather", (req, res) => {
         const avgTempForToday = response.data.list.slice(samplesPerDay)
             .map(item => item.main.temp)
             .reduce((acum, curr, _, arr) => acum + curr / arr.length, 0);
-	    const tempInCelsius = Math.round(kelvinToCelsius(avgTempForToday));
-        const json = { temp: tempInCelsius};
+        const json = { temp: avgTempForToday };
         res.send(json);
         console.log(json);
     }).catch(function (error) {
@@ -45,14 +44,10 @@ app.get("/weather", (req, res) => {
     });
 });
 
-function kelvinToCelsius(kelvin) {
-    return kelvin - 273.15;
-}
-
 const entries = [{
     date: 1646792019819,
     zip: 55124,
-    temp: -9.222193749999957,
+    temp: 263.92780625,
     feeling: "Hello world!👋 from Minnesota 🥶"
 }];
 app.get("/entries", (req, res) => {

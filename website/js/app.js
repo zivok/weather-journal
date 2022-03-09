@@ -29,6 +29,11 @@ function createEntity({ zip, feeling }) {
     });
 }
 
+function formatTemp(kelvin) {
+    const celsius = kelvin - 273.15;
+    return `${celsius.toFixed(2)}°C`;
+}
+
 function formatDate(date) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(date).toLocaleDateString("en-US", options);
@@ -43,7 +48,7 @@ function updateUI() {
             const newEntries = entries.slice(currentEntriesCount, entries.length);
             newEntries.forEach(({ date, temp, feeling }) => {
                 template.querySelector(".date").textContent = formatDate(date);
-                template.querySelector(".temp").textContent = `${temp.toFixed(2)}°C`;
+                template.querySelector(".temp").textContent = formatTemp(temp);
                 template.querySelector(".feelings").textContent = feeling;
                 const clone = document.importNode(template, true);
                 fragment.appendChild(clone);
