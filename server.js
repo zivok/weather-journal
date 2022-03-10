@@ -1,3 +1,4 @@
+const entries = require("./data");
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
@@ -48,12 +49,6 @@ app.get("/weather", (req, res) => {
     });
 });
 
-const entries = [{
-    date: 1646792019819,
-    zip: 55124,
-    temp: 263.92780625,
-    feeling: "Hello world!👋 from Minnesota 🥶"
-}];
 app.get("/entries", (req, res) => {
     console.log(req.path)
     res.send(entries);
