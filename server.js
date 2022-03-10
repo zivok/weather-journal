@@ -6,7 +6,7 @@ if (process.env.NODE_ENV !== "production") {
 const baseURL = process.env.BASE_URL;
 const apiHost = process.env.API_HOST;
 const apiKey = process.env.API_KEY;
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 
 const express = require("express");
 const bodyParser = require("body-parser");
