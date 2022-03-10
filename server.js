@@ -1,6 +1,11 @@
-const baseURL = "https://community-open-weather-map.p.rapidapi.com/forecast";
-const apiHost = "community-open-weather-map.p.rapidapi.com";
-const apiKey = "a2e5d3c80fmshe76e667a371f3a2p1690dejsnb9608ca058bd";
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
+
+const baseURL = process.env.BASE_URL;
+const apiHost = process.env.API_HOST;
+const apiKey = process.env.API_KEY;
+const port = process.env.PORT;
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -13,7 +18,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-const port = 8000;
 app.listen(port, () => console.log(`Running localhost on port: ${port}`));
 
 app.get("/weather", (req, res) => {
