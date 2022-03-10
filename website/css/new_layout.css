@@ -25,7 +25,6 @@
     color: white;
 }
 
-
 #new__layout .content {
     display: grid;
     grid-template-columns: 1fr;
@@ -36,6 +35,7 @@
 @media (min-width: 900px) {
     #new__layout .content {
         display: block;
+        height: min-content;
     }
 
     #new__layout {
